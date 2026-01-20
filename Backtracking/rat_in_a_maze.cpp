@@ -32,7 +32,7 @@ vector<string> findPath(vector<vector<int>> &maze) {
     vector<string> ans;
     string path = "";
     int n = maze.size();
-    vector<vector<bool>> vis(n, vector<bool>(n, false));
+    // vector<vector<bool>> vis(n, vector<bool>(n, false));
 
     mazeSolver(maze, 0, 0, path, ans);
     return ans;

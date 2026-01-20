@@ -18,9 +18,9 @@ bool knightsTour(int board[n][n], int row, int col, int moveCount) {
     if(moveCount == n * n) {
         return true;
     }
-    for(int k = 0; k < 8; k++) {
-        int newRow = row + moveX[k];
-        int newCol = col + moveY[k];
+    for(int i = 0; i < 8; i++) {
+        int newRow = row + moveX[i];
+        int newCol = col + moveY[i];
 
         if(isSafe(board, newRow, newCol)) {
             board[newRow][newCol] = moveCount;
