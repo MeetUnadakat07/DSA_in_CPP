@@ -65,7 +65,7 @@ Node *splitAtMid(Node *head) {
         fast = fast -> next -> next;
     }
     if(prev != NULL) {
-        prev -> next = NULL;
+        prev -> next = NULL;        // split at middle
     }
     return slow;
 }
