@@ -64,38 +64,54 @@ void printList(Node *head) {
 //     return NULL;
 // }
 
+// Node *findIntersection(Node *head1, Node *head2) {
+//     int size1 = 0;
+//     int size2 = 0;
+//     Node *temp1 = head1;
+//     Node *temp2 = head2;
+//     while(temp1 != NULL) {
+//         size1++;
+//         temp1 = temp1->next;
+//     }
+//     while(temp2 != NULL) {
+//         size2++;
+//         temp2 = temp2->next;
+//     }
+//     temp1 = head1;
+//     temp2 = head2;
+//     if(size1 > size2) {
+//         for(int i = 0; i < (size1 - size2); i++) {
+//             temp1 = temp1->next;
+//         }
+//     } else {
+//         for(int i = 0; i < (size2 - size1); i++) {
+//             temp2 = temp2 -> next;
+//         }
+//     }
+//     while(temp1 != NULL && temp2 != NULL) {
+//         if(temp1 == temp2) {
+//             return temp1;
+//         }
+//         temp1 = temp1 -> next;
+//         temp2 = temp2 -> next;
+//     }
+//     return NULL;
+// }
+
 Node *findIntersection(Node *head1, Node *head2) {
-    int size1 = 0;
-    int size2 = 0;
     Node *temp1 = head1;
     Node *temp2 = head2;
-    while(temp1 != NULL) {
-        size1++;
-        temp1 = temp1->next;
-    }
-    while(temp2 != NULL) {
-        size2++;
-        temp2 = temp2->next;
-    }
-    temp1 = head1;
-    temp2 = head2;
-    if(size1 > size2) {
-        for(int i = 0; i < (size1 - size2); i++) {
-            temp1 = temp1->next;
-        }
-    } else {
-        for(int i = 0; i < (size2 - size1); i++) {
-            temp2 = temp2 -> next;
-        }
-    }
-    while(temp1 != NULL && temp2 != NULL) {
-        if(temp1 == temp2) {
-            return temp1;
-        }
+
+    while(temp1 != temp2) {
         temp1 = temp1 -> next;
         temp2 = temp2 -> next;
+
+        if(temp1 == temp2) return temp1;
+
+        if(temp1 == NULL) temp1 = head2;
+        if(temp2 == NULL) temp2 = head1;
     }
-    return NULL;
+    return temp1;
 }
 
 int main() {
