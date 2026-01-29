@@ -92,14 +92,31 @@ Node* mergeTwoLists(Node* head1, Node* head2) {
     }
 }
 
-Node* mergeKSortedLists(vector<Node *> &lists) {
-    if (lists.size() == 0) return NULL;
-    Node *head = lists[0];
+// Node* mergeKSortedLists(vector<Node *> &lists) {
+//     if (lists.size() == 0) return NULL;
+//     Node *head = lists[0];
 
-    for(int i = 1; i < lists.size(); i++) {
-        head = mergeTwoLists(head, lists[i]);
-    }
-    return head;
+//     for(int i = 1; i < lists.size(); i++) {
+//         head = mergeTwoLists(head, lists[i]);
+//     }
+//     return head;
+// }
+
+Node* mergeKListsHelper(vector<Node*>& lists, int left, int right) {
+    if (left > right) return NULL;
+    if (left == right) return lists[left];
+
+    int mid = left + (right - left) / 2;
+
+    Node* l1 = mergeKListsHelper(lists, left, mid);
+    Node* l2 = mergeKListsHelper(lists, mid + 1, right);
+
+    return mergeTwoLists(l1, l2);
+}
+
+Node* mergeKSortedLists(vector<Node*>& lists) {
+    if (lists.size() == 0) return NULL;
+    return mergeKListsHelper(lists, 0, lists.size() - 1);
 }
 
 int main() {
