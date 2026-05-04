@@ -47,7 +47,7 @@ bool isSafe(vector<vector<char>> board, int row, int col) {
 
 }
 
-void nQueens(vector<vector<char>> board, int row) {   // ith row pe ith queen ko place karvana hai
+void nQueens(vector<vector<char>> &board, int row) {   // ith row pe ith queen ko place karvana hai
     int n = board.size();
     if(row == n) {
         printBoard(board);
